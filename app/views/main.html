@@ -34,21 +34,30 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th><a href="#"
-						ng-click="orderByField='date'; reverseSort = !reverseSort">
-							Date <span ng-show="orderByField == 'date'"><span
-								ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-					</a></th>
-					<th><a href="#"
-						ng-click="orderByField='url'; reverseSort = !reverseSort">
-							Url <span ng-show="orderByField == 'url'"><span
-								ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-					</a></th>
-					<th><a href="#"
-						ng-click="orderByField='time'; reverseSort = !reverseSort"> Time
-							<span ng-show="orderByField == 'time'"><span
-								ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-					</a></th>
+					<th>
+						<a href="#" ng-click="orderByField='date'; reverseSort = !reverseSort">
+							Date <span ng-show="orderByField == 'date'">
+								<span ng-show="!reverseSort">^</span>
+								<span ng-show="reverseSort">v</span>
+							</span>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="orderByField='url'; reverseSort = !reverseSort">
+							Url <span ng-show="orderByField == 'url'">
+								<span ng-show="!reverseSort">^</span>
+								<span ng-show="reverseSort">v</span>
+							</span>
+						</a>
+					</th>
+					<th>
+						<a href="#" ng-click="orderByField='time'; reverseSort = !reverseSort"> 
+							Time <span ng-show="orderByField == 'time'">
+								<span ng-show="!reverseSort">^</span>
+								<span ng-show="reverseSort">v</span>
+							</span>
+						</a>
+					</th>
 				</tr>
 			</thead>
 			<tbody>
