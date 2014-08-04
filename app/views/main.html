@@ -4,13 +4,23 @@
   <!-- Input -->
   <form role="form" ng-submit="addRow()">
     <div class="row">
-      <div class="input-group">
-        <input type="text" ng-model="value.date" placeholder="Add date" class="form-control">
-        <input type="text" ng-model="value.url" placeholder="Add url" class="form-control">
-        <input type="text" ng-model="value.time" placeholder="Add response time" class="form-control">
+      <div class="input-group"> 
+        <ul class="nav nav-pills">
+          <li>
+            <input type="text" datepicker ng-model="value.date" select="updateMyText(date)" class="form-control">
+          </li>
+          <li>
+        	<input type="text" ng-model="value.url" placeholder="Add url" class="form-control">
+          </li>
+          <li>
+        	<input type="text" ng-model="value.time" placeholder="Add response time" class="form-control">
+          </li>
+          <li>
         <span class="input-group-btn">
           <input type="submit" class="btn btn-primary" value="Add">
         </span>
+          </li>
+        </ul>
       </div>
     </div>
   </form>
@@ -42,13 +52,34 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr
-					ng-repeat="value in values|orderBy:orderByField:reverseSort">
+				<tr ng-repeat="value in inputs|orderBy:orderByField:reverseSort">
 					<td>{{value.date}}</td>
 					<td>{{value.url}}</td>
 					<td>{{value.time}}</td>
 				</tr>
 			</tbody>
 		</table>
+	</section>
+	
+	
+	<section>
+	   <h2>Chart</h2>
+	   
+		<select ng-model="chartType">
+			<option value="pie">pie</option>
+			<option value="bar">bar</option>
+			<option value="line">line</option>
+			<option value="point">point</option>
+			<option value="area">area</option>
+		</select>
+		
+		<span ng-show="chartType==='pie'">
+			<label for="innerRadius">Radius:</label>
+			<input ng-model="config1.innerRadius" type="number" id="innerRadius" />
+		</span>
+		
+		<br />
+		
+		<div ac-chart="chartType" ac-data="values" ac-config="chartConfig"></div>
 	</section>
 </div>
