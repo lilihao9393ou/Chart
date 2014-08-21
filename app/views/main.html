@@ -11,6 +11,9 @@
 				<td>
 					<span class="label">[ <a href="" ng-click="predicate=''" class="btn btn-primary">Click here to unsort</a> ]</span>
 				</td>
+				<td>
+					<span class="label">[ <a href="" ng-click="inputs = []" class="btn btn-primary">Click here to clear data</a> ]</span>
+				</td>
 			</tr>
 		</tbody>
 	</table>
@@ -109,9 +112,9 @@
             <div class="col-xs-12">
                 <ul class="nav nav-tabs" mc-toggle-active>
                     <li><a href="" ng-click="changeChartType('bar')">Bar</a></li>
-                    <li><a href="" ng-click="changeChartType('column')">Column</a></li>
+                    <li class="active"><a href="" ng-click="changeChartType('column')">Column</a></li>
                     <li><a href="" ng-click="changeChartType('line')">Line</a></li>
-                    <li class="active"><a href="" ng-click="changeChartType('area')">Area</a></li>
+                    <li><a href="" ng-click="changeChartType('area')">Area</a></li>
                     <li><a href="" ng-click="changeChartType('pie')">Pie</a></li>
                     <li><a href="" ng-click="changeChartType('doughnut')">Doughnut</a></li>
                     <li><a href="" ng-click="changeChartType('scatter')">Scatter</a></li>
