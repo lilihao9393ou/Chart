@@ -35,7 +35,9 @@ angular.module('ChartApp')
      var datapoints = [];
       
      var chartPoint = null;
-     var editMode = false;
+     $scope.canEdit = true;
+     $scope.editMode = false;
+     $scope.units = 1; // increase or decrease bar value by this unit
      $scope.chart = new CanvasJS.Chart('chartContainer', {
        theme: 'theme1',
        interactivityEnabled: true,
@@ -54,18 +56,22 @@ angular.module('ChartApp')
        data: [              
           {
             click: function() {
-              editMode = !editMode; 
+              $scope.$apply(function() {
+                if($scope.canEdit) {
+                  $scope.editMode = !$scope.editMode; 
+                }
+              });
               
-              if(editMode) {
+              if($scope.editMode) {
                 console.log('EditMode is now TRUE');
               }
               
-              if(!editMode) {
+              if(!$scope.editMode) {
                 console.log('EditMode is now FALSE');
               }
             },
             mousemove: function(e) {
-              if(!editMode) {
+              if(!$scope.editMode) {
                 chartPoint = null;
                 return false;
               }
@@ -78,14 +84,15 @@ angular.module('ChartApp')
               
               // Update inputs at the correct index will re-render graph and table data
               $scope.$apply(function() {
-                var time = e.y * chartPoint.dataPoint.y / chartPoint.y;
+                var diffY = e.y - chartPoint.y; // if it is > 0 means that the mouse pointer went UP
+                var time = diffY < 0 ? e.dataPoint.y+$scope.units : e.dataPoint.y-$scope.units;
                 $scope.inputs[e.dataPointIndex].time = time;
-                console.log(e.y + ' * ' + chartPoint.dataPoint.y + ' / ' + chartPoint.y);
-                console.log(time);
+                // Update chartPoint
+                chartPoint = e;
               });
               
             },
-             type: 'area',
+             type: 'column',
              dataPoints: []
           }
        ]
@@ -94,6 +101,8 @@ angular.module('ChartApp')
     $scope.chart.render(); //render the chart for the first time
             
     $scope.changeChartType = function(chartType) {
+      $scope.canEdit = 'column' === chartType;
+      $scope.editMode = false; // disable EditMode whatever the type is
       $scope.chart.options.data[0].dataPoints = datapoints;
       $scope.chart.options.data[0].type = chartType;
         $scope.chart.render(); //re-render the chart to display the new layout

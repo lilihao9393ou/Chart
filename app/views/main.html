@@ -99,6 +99,11 @@
   <!-- Chart -->
 	<section>
 	   <h2>Chart</h2>
+	   <p>Select <strong>bar chart</strong> type to use <strong>edit mode</strong>. </p>
+	   <p>To enable <strong>edit mode</strong> click on a bar and drag UP or DOWN mouse pointer.</p>
+	   <p>You {{canEdit ? 'CAN' : 'CAN\'T'}} go <strong>edit mode</strong> using this chart type. {{canEdit ? 'Click on a bar and move UP or DOWN!' : ''}}</p>
+	   <pre>Edit mode is {{editMode ? 'ON' : 'OFF'}}</pre>
+	   <p>Increase/decrease by <input type="number" ng-model="units" value="1"> unit(s)</p>
 	   
         <div class="row">
             <div class="col-xs-12">
