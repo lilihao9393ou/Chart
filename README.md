@@ -19,6 +19,12 @@ bower install
 grunt build
 ```
 
+### Run the app locally ( after npm & bower install )
+
+```
+grunt serve
+```
+
 ### Run unit test
  
 Please note you must be in the module root using the console.
