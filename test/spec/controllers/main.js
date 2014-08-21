@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('ngprojectApp'));
+  beforeEach(module('ChartApp'));
 
   var MainCtrl,
     scope;
@@ -16,7 +16,7 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should attach a list of inputs to the scope ', function () {
+    expect(scope.inputs.length).toBe(3);
   });
 });

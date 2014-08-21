@@ -25,7 +25,7 @@ grunt build
 grunt serve
 ```
 
-### Run unit test
+### Run unit test (WIP)
  
 Please note you must be in the module root using the console.
 
