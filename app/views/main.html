@@ -1,94 +1,122 @@
 <div class="container">
-  <h2>Data charts</h2>
-  
-  <!-- Input -->
-  <form role="form" ng-submit="addRow()">
-    <div class="row">
-      <div class="input-group"> 
-        <ul class="nav nav-pills">
-          <li>
-            <input type="text" datepicker ng-model="value.date" select="updateMyText(date)" class="form-control">
-          </li>
-          <li>
-        	<input type="text" ng-model="value.url" placeholder="Add url" class="form-control">
-          </li>
-          <li>
-        	<input type="text" ng-model="value.time" placeholder="Add response time" class="form-control">
-          </li>
-          <li>
-        <span class="input-group-btn">
-          <input type="submit" class="btn btn-primary" value="Add">
-        </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </form>
-  <p></p>
-  
+
   <!-- List -->
-  <section>
-		<span class="label">Ordered By: {{orderByField}}, Reverse Sort:
-			{{reverseSort}}</span><br>
-		<br>
-		<table class="table table-bordered">
+  <section>  
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>
+					<pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
+				</td>
+				<td>
+					<span class="label">[ <a href="" ng-click="predicate=''" class="btn btn-primary">Click here to unsort</a> ]</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>
-						<a href="#" ng-click="orderByField='date'; reverseSort = !reverseSort">
-							Date <span ng-show="orderByField == 'date'">
-								<span ng-show="!reverseSort">^</span>
-								<span ng-show="reverseSort">v</span>
+						<a href="" ng-click="predicate = 'timestamp'; reverse = !reverse">
+							Date <span ng-show="predicate == 'timestamp'">
+								<span ng-show="!reverse">^</span>
+								<span ng-show="reverse">v</span>
 							</span>
 						</a>
 					</th>
 					<th>
-						<a href="#" ng-click="orderByField='url'; reverseSort = !reverseSort">
-							Url <span ng-show="orderByField == 'url'">
-								<span ng-show="!reverseSort">^</span>
-								<span ng-show="reverseSort">v</span>
+						<a href="" ng-click="predicate = 'url'; reverse = !reverse">
+							Url <span ng-show="predicate == 'url'">
+								<span ng-show="!reverse">^</span>
+								<span ng-show="reverse">v</span>
 							</span>
 						</a>
 					</th>
 					<th>
-						<a href="#" ng-click="orderByField='time'; reverseSort = !reverseSort"> 
-							Time <span ng-show="orderByField == 'time'">
-								<span ng-show="!reverseSort">^</span>
-								<span ng-show="reverseSort">v</span>
+						<a href="" ng-click="predicate = 'time'; reverse = !reverse"> 
+							Time <span ng-show="predicate == 'time'">
+								<span ng-show="!reverse">^</span>
+								<span ng-show="reverse">v</span>
 							</span>
 						</a>
+					</th>
+					<th>
 					</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="value in inputs|orderBy:orderByField:reverseSort">
-					<td>{{value.date}}</td>
-					<td>{{value.url}}</td>
-					<td>{{value.time}}</td>
+				<tr ng-repeat="value in inputs|orderBy:predicate:reverse">
+					<td><input type="text" ng-model="value.date" class="form-control" datepicker 
+						data-datepickeroptions='{"changeMonth": 1, "changeYear": 1, "dateFormat": "MM dd yy"}' 
+						ng-pattern="dateRegexp"></td>
+					<td><input type="url" ng-model="value.url" class="form-control" required="true"></td>
+					<td><input type="number" ng-model="value.time" class="form-control" required="true"></td>
+					<td>
+						<span class="input-group-btn">
+							<button class="btn btn-danger" ng-click="removeInput($index)" aria-label="Remove">X</button>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<br />
+		
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>
+					  <form role="form"  name="add" ng-submit="addRow()">
+					        <ul class="nav nav-pills">
+					          <li>
+								<input type="text" class="form-control" ng-required="true"  
+									datepicker select="updateMyText(date)"  placeholder="January 01 2014"
+									data-datepickeroptions='{"changeMonth": 1, "changeYear": 1, "defaultDate": "January 01 2014", "dateFormat": "MM dd yy"}' 
+									ng-model="value.date" ng-pattern="dateRegexp">
+					          </li>
+					          <li>
+					        	<input type="url" ng-model="value.url" placeholder="http://" class="form-control" ng-required="true">
+					          </li>
+					          <li>
+					        	<input type="number" ng-model="value.time" placeholder="Add response time" class="form-control" ng-required="true">
+					          </li>
+					          <li>
+						        <span class="input-group-btn">
+						          <input type="submit" class="btn btn-primary" value="Add" ng-hide="add.$invalid">
+						          <a class="btn btn-danger" ng-show="add.$invalid">Complete all fields</a>
+						        </span>
+					          </li>
+					        </ul>
+					  </form>
+					</td>
 				</tr>
 			</tbody>
 		</table>
 	</section>
 	
-	
+  <!-- Chart -->
 	<section>
 	   <h2>Chart</h2>
 	   
-		<select ng-model="chartType">
-			<option value="pie">pie</option>
-			<option value="bar">bar</option>
-			<option value="line">line</option>
-			<option value="point">point</option>
-			<option value="area">area</option>
-		</select>
-		
-		<span ng-show="chartType==='pie'">
-			<label for="innerRadius">Radius:</label>
-			<input ng-model="config1.innerRadius" type="number" id="innerRadius" />
-		</span>
-		
-		<br />
-		
-		<div ac-chart="chartType" ac-data="values" ac-config="chartConfig"></div>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs" mc-toggle-active>
+                    <li><a href="" ng-click="changeChartType('bar')">Bar</a></li>
+                    <li><a href="" ng-click="changeChartType('column')">Column</a></li>
+                    <li><a href="" ng-click="changeChartType('line')">Line</a></li>
+                    <li class="active"><a href="" ng-click="changeChartType('area')">Area</a></li>
+                    <li><a href="" ng-click="changeChartType('pie')">Pie</a></li>
+                    <li><a href="" ng-click="changeChartType('doughnut')">Doughnut</a></li>
+                    <li><a href="" ng-click="changeChartType('scatter')">Scatter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="chartContainer"></div>
+            </div>
+        </div>
 	</section>
 </div>

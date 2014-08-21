@@ -1,6 +1,6 @@
 'use strict';
 
-var directives = angular.module('App.directives');
+var directives = angular.module('ChartApp.directives');
 
 directives.directive('datepicker', function() {
   return {
@@ -23,7 +23,7 @@ directives.directive('datepicker', function() {
       var optionsObj = 'datepickeroptions' in attrs ?
           $.parseJSON(attrs.datepickeroptions) : {};
 
-      optionsObj.dateFormat = 'dd MM yy';
+      //optionsObj.dateFormat = 'dd MM yy';
       var updateModel = function(dateTxt) {
         scope.$apply(function() {
           // Call the internal AngularJS helper to

@@ -2,19 +2,26 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Chart Test Application</title>
     
 	<style type="text/css">
 	body {
 		font-family: "helvetica";
 		color : #333;
 	}
-	[ac-chart] {
-		float:left;
-		width: 48%;
-		height: 400px;
-		margin: 0 1%;
+    #chartContainer {
+        margin-top: 30px;
+        height: 500px; 
+        width: 100%;
+    }
+    
+	input.ng-invalid.ng-dirty {
+		background-color: #FA787E;
 	}
+
+	input.ng-valid.ng-dirty {
+    	background-color: #78FA89;
+  	}
 	</style>
     
     <meta name="description" content="">
@@ -25,11 +32,15 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    
+	<!-- Place here all those scripts that cannot be added with bower-install -->
     <!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="bower_components/jquery-ui/themes/base/all.css">
+    <link rel="stylesheet" href="bower_components/angular-ui/build/angular-ui.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="ngprojectApp">
+  <body ng-app="ChartApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -37,10 +48,7 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-        </ul>
-        <h3 class="text-muted">ngproject</h3>
+        <h1 class="text-muted">Chart Test Application</h1>
       </div>
 
       <div ng-view=""></div>
@@ -81,17 +89,21 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/d3/d3.js"></script>
-    <script src="bower_components/angular-charts/dist/angular-charts.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/directives/directive.js"></script>
-        <script src="scripts/directives/datepickerDirective.js"></script>
-        <!-- endbuild -->
+	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<script src="bower_components/jquery-ui/ui/i18n/datepicker-en-GB.js"></script>
+    <script src="bower_components/angular-ui/build/angular-ui.js"></script>
+	<script src="scripts/vendor/canvasjs-1.5.0-beta/canvasjs.min.js"></script>
+	<script src="scripts/app.js"></script>
+	
+	<script src="scripts/directives/directive.js"></script>
+	<script src="scripts/directives/datepickerDirective.js"></script>
+	<script src="scripts/directives/toggleActiveDirective.js"></script>
+        
+	<script src="scripts/controllers/main.js"></script>
+	<!-- endbuild -->
 </body>
 </html>
