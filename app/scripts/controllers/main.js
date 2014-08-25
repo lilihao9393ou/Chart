@@ -1,7 +1,5 @@
 'use strict';
 
-/*global CanvasJS:false */
-
 /**
  * @ngdoc function
  * @name ngprojectApp.controller:MainCtrl
@@ -10,7 +8,7 @@
  * Controller of the ngprojectApp
  */
 angular.module('ChartApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $window) {
     
     // Regexp to ensure that input dates are in the required format
     $scope.dateRegexp = /^(January|February|March|April|June|July|August|Semptember|October|November|December)[ ](0[1-9]|1[0-9]|2[0-9]|3[0-1])[ ](19|20)\d{2}$/i;
@@ -38,7 +36,7 @@ angular.module('ChartApp')
      $scope.canEdit = true;
      $scope.editMode = false;
      $scope.units = 1; // increase or decrease bar value by this unit
-     $scope.chart = new CanvasJS.Chart('chartContainer', {
+     $scope.chart = new $window.CanvasJS.Chart('chartContainer', {
        theme: 'theme1',
        interactivityEnabled: true,
        title:{

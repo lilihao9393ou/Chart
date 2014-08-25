@@ -26,16 +26,25 @@ module.exports = function(config) {
       'app/bower_components/angular-route/angular-route.js',
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-touch/angular-touch.js',
-      
+      'app/bower_components/angular-route/angular-route.js',
+
       'app/bower_components/jquery/dist/jquery.js',
+      'app/bower_components/json3/lib/json3.js',
+      'app/bower_components/bootstrap/dist/js/bootstrap.js',
       'app/bower_components/angular-ui/build/angular-ui.js',
       'app/bower_components/jquery-ui/jquery-ui.js',
       'app/scripts/vendor/canvasjs-1.5.0-beta/canvasjs.min.js',
       
+
+      'app/bower_components/jquery-ui/ui/i18n/datepicker-en-GB.js',
+
       'app/scripts/directives/directive.js',
+      'app/scripts/directives/datepickerDirective.js',
+      'app/scripts/directives/toggleActiveDirective.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
+      
     ],
 
     // list of files / patterns to exclude
