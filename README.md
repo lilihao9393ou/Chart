@@ -40,9 +40,11 @@ grunt test
 ### Run end2end test with protractor
  
 Protractor must be installed. 
-Cd insie test/e2e then run comman below
+Cd inside test/e2e then run comman below
 
 ```
+grunt serve // Protractor will read the page served by this command
+
 protractor conf.js
 ```
 
