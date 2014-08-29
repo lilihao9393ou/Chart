@@ -8,7 +8,7 @@
  * Controller of the ngprojectApp
  */
 angular.module('ChartApp')
-  .controller('MainCtrl', function ($scope, $window) {
+  .controller('MainCtrl', function ($scope, $window, $timeout) {
     
     // Regexp to ensure that input dates are in the required format
     $scope.dateRegexp = /^(January|February|March|April|June|July|August|Semptember|October|November|December)[ ](0[1-9]|1[0-9]|2[0-9]|3[0-1])[ ](19|20)\d{2}$/i;
@@ -18,10 +18,17 @@ angular.module('ChartApp')
       $scope.inputs.splice(index, 1);
     };
 
+    $scope.showWait = false;
+
     // Called to add an entry
     $scope.addRow = function () {
-      $scope.inputs.push($scope.value);
-      $scope.value = '';
+      $scope.showWait = true;
+      
+      $timeout(function() {
+         $scope.inputs.push($scope.value);
+         $scope.value = '';
+         $scope.showWait = false;
+      }, 1000);
     };
 		
      $scope.predicate = '';

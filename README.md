@@ -25,7 +25,7 @@ grunt build
 grunt serve
 ```
 
-### Run unit test (WIP)
+### Run unit test
  
 Please note you must be in the module root using the console.
 
@@ -33,14 +33,17 @@ Please note you must be in the module root using the console.
 // run unit tests
 grunt test:unit
 
-// run midway tests
-grunt test:midway
-
-// run e2e tests
-grunt test:e2e
-
-// run all tests
+// or
 grunt test
+```
+
+### Run end2end test with protractor
+ 
+Protractor must be installed. 
+Cd insie test/e2e then run comman below
+
+```
+protractor conf.js
 ```
 
 ### Build, test and run all the task

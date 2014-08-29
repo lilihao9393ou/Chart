@@ -27,4 +27,9 @@ describe('Controller: MainCtrl', function () {
   it('expect reverse to be false', function () {
     expect(scope.reverse).toBe(false);
   });
+
+  it('Reduced input after slice', function () {
+    scope.removeInput(1);
+    expect(scope.inputs.length).toBe(2);
+  });
 });
