@@ -53,11 +53,20 @@ grunt protractor
 grunt test
 ```
 
-### Build, test and run all the task
+### Build without test 
 
 Please note you must be in the module root using the console.
 
 ```
 npm install
 grunt build
+```
+
+### Build, test and run all the task
+
+```
+npm install
+grunt serve // Protractor will read the page served by this command
+webdriver-manager start // start a selenium server
+grunt
 ```
