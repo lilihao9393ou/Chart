@@ -31,21 +31,26 @@ Please note you must be in the module root using the console.
 
 ```
 // run unit tests
-grunt test:unit
+grunt karma:unit
 
-// or
-grunt test
 ```
 
 ### Run end2end test with protractor
  
 Protractor must be installed. 
-Cd inside test/e2e then run comman below
+Multiple console windows should be used.
 
 ```
 grunt serve // Protractor will read the page served by this command
 
-protractor conf.js
+webdriver-manager start // start a selenium server
+
+grunt protractor
+```
+### Run all tests
+
+```
+grunt test
 ```
 
 ### Build, test and run all the task
