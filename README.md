@@ -67,6 +67,6 @@ grunt build
 ```
 npm install
 grunt serve // Protractor will read the page served by this command
-webdriver-manager start // start a selenium server
+node node_modules/protractor/bin/webdriver-manager start // start a selenium server
 grunt
 ```
