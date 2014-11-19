@@ -11,12 +11,29 @@ entered update automatically to reflect the change
 
 ### Build the application for deploy
 
+Manually add CanvasJS lib in /app/scripts/vendor/canvasjs-1.5.0-beta/canvasjs.min.js
+
 Please note you must be in the module root using the console.
 
 ```
 npm install
 bower install
 grunt build
+```
+
+In the event of 'wiredep' error when building, set as empty string the 'cwd' property 
+of the wiredep configuration in Gruntfile.js 
+
+```
+wiredep: {
+  options: {
+    cwd: ''
+  },
+  app: {
+    src: ['<%= yeoman.app %>/index.html'],
+    ignorePath:  /\.\.\//
+  }
+},
 ```
 
 ### Run the app locally ( after npm & bower install )
@@ -37,7 +54,8 @@ grunt karma:unit
 
 ### Run end2end test with protractor
  
-Protractor must be installed. 
+Protractor must be installed 
+(follow this tutorial http://www.sergiorinaudo.com/angularjs-e2e-tests-implementare-protractor-ed-utilizzarlo-con-grunt/).
 Multiple console windows should be used.
 
 ```
